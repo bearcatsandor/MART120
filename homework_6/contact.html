@@ -1,0 +1,28 @@
+<html>
+	<title>Bearcat Sandor - Contact</title>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+		<script>
+			$(function(){
+				$("#header-template").load("header.html");
+				$("#footer-template").load("footer.html");
+			});
+		</script>
+	</head>
+	<body>
+		<div id="header-template"></div>
+		<div class="text-block">
+			<h2>Completely Fair Website Agreement</h2>
+			<form action="submit_contact.php" method="post">
+				<label for="name">Name:</label><br>
+				<input type="text" id="name" name="name" placeholder="Your Full Name"><br>
+				<label for="email">Email:</label><br>
+				<input type="text" id="email" name="email" placeholder="Your Email Address"><br>
+				<input type="checkbox" id="terms" name="terms" value="agreed">
+				<label for="terms">I promise to never check a box</label><br><br>
+				<input type="submit" value="Submit">
+			</form> 
+		</div>
+	</body>
+</html>
