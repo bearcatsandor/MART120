@@ -2,6 +2,11 @@
 	<title>Bearcat Sandor - Contact</title>
 	<head>
 		<link rel="stylesheet" href="style.css">
+		<style>
+			form#agreement input {
+				border-color: black;
+			}
+		</style>	
 		<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 		<script>
 			$(function(){
@@ -9,12 +14,38 @@
 				$("#footer-template").load("footer.html");
 			});
 		</script>
+		<script>
+			function validateForm() {
+				
+				/*make sure all of the items are filled out
+				based on code from stackexchange 19978600*/
+				var elements = document.getElementById("agreement").elements;
+
+				for (var i = 0, element; element = elements[i++];) {
+					element.style.borderColor = "black";
+					if (element.value === "") {
+        					console.log("This item has not been filled out");
+						window.alert("Please complete the '" + element.name + "' form item");
+						element.style.borderColor = "red";
+						element.focus();
+						return false;
+					}
+					/*if getElementById("terms").checked == false {
+						getElementById("terms").style.borderColor= "red";
+						return false;
+					}*/	
+				}		
+				return true;
+			}	
+		</script>
+
+
 	</head>
 	<body>
 		<div id="header-template"></div>
 		<div class="text-block">
 			<h2>Completely Fair Website Agreement</h2>
-			<form action="submit_contact.php" method="post">
+			<form id="agreement" onsubmit="return validateForm()" action="submit_contact.php" method="post">
 				<label for="name">Name:</label><br>
 				<input type="text" id="name" name="name" placeholder="Your Full Name"><br>
 				<label for="email">Email:</label><br>
