@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>
+           Bearcat M. Şándor - Self Portrait  
+        </title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+        <script>
+            var x = 0;
+            var y = 0;
+            var diameter = 50;
+            var movement = Math.floor(Math.random() * 15) + 1;
+            var timestamp = 0;
+            //var movement = 3;
+            function setup() {
+                createCanvas(800, 800);
+            }
+            function draw() {
+             
+                // face and ears
+                background(128,128,128);
+                noFill()
+                ellipse(400,300,350,360);
+                triangle(235, 180, 263, 125, 291, 180);
+                triangle(505, 180, 533, 125, 561, 180);
+                // eyes
+                ellipse(325,250,20,40)
+                ellipse(465,250,20,40)
+                // nose  
+                let p1 = { x: 376, y: 255 };
+                let p2 = { x: 378, y: 323 }
+                let p3 = { x: 411, y: 323 };
+                let p4 = { x: 416, y: 255 };
+                curve(p1.x, p1.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+                curve(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);
+                curve(p2.x, p2.y, p3.x, p3.y, p4.x, p4.y, p4.x, p4.y);
+                //whiskers
+                line(335,290,373,290);
+                line(415,290,465,290);
+                line(335,300,373,300);
+                line(415,300,465,300);
+                line(333,310,373,310);
+                line(415,310,465,310);
+                //philtrum
+                line(395,333,395,350);
+                // lips
+                line(380,350,410,350);
+             /* Lets add some moving and spinning shapes. I'll use ovals so that I don't 
+                have to deal with increasing all those damned points*/
+                // oval on x-axis                
+               fill(141, 88, 161);
+               ellipse(x,670,20, 40);
+               // rounded square on x-axis
+               square(x,6, 35, 50);
+               x += movement;
+               // oval on y-axis                
+               fill(88, 90, 161);
+               ellipse(15, y,20, 40);
+               // rounded square on y-axis
+               square(750, y, 35, 50);
+               y += movement;
+               // Bounce off walls
+               if((x >= 800 || x <= 0) || (y >= 800 || y <= 0))
+               {
+                  movement *= -1;
+               }
+               //Shapes on the diagonal
+               fill(222, 224, 72);
+               ellipse(x,y,20, 40);
+               square(x+20,y+50, 35, 50);
+             
+               // make signature text grow bigger and smaller
+               /*for (let i = 1; i < 6; i++) {
+                 // set fill and stroke to background color to avoid dupes
+                 fill(128, 128, 128);
+                 stroke(128, 128, 128);
+                 text("Bearcat Self Portrait - Feline Face", 150, 600);
+                 textSize(32 * i);
+                 fill(0, 102, 153);
+                 stroke(0, 102, 153);
+                 text("Bearcat Self Portrait - Feline Face", 150, 600);
+                 // wait 1 second;
+                 if (millis() - timestamp > 1000) {
+                   index++;
+                   timestamp = millis();
+                 }
+               }*/
+             
+               //for (let i = 1; i < 6; i++) {
+                // textSize(32 * -i);
+              // }
+            //text("Bearcat Self Portrait - Feline Face", 150, 600);
+             fill(0, 102, 153);
+             textSize(32);
+             text("Bearcat Self Portrait - Feline Face", 150, 600);
+             
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
