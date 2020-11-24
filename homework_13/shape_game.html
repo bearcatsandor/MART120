@@ -1,0 +1,213 @@
+<html>
+    <head>
+        <title>
+           Bearcat M. Şándor - Shape Game  
+        </title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+        <script>
+            // shape variables
+            let playerPosition = [200, 100];
+            let clickShapes = [] // make an array of click shapes
+            //let shapeColors = ['blue', 'yellow', 'red', 'green', 'orange']
+            let shapeColors = ['maroon', 'red', 'purple', 'fushsia', 'green', 'lime', 'olive', 'yellow', 'navy', 'blue', 'teal', 'aqua'];
+
+            // The language constants of 'width' and 'height' are confusing
+            let canvasWidth = 800;
+            let canvasHeight = 800;
+            let canvasColor = 220;
+            let lineThickness = 10;
+            let exitStart = 450;
+            let exitHeight = 100;
+
+            function setup() {
+                canvas = createCanvas(canvasWidth, canvasHeight );
+            }
+
+            function draw() {
+                background(220);
+                characterCreate();
+                characterMove();
+                wallsCreate();
+    
+                // If we win, game over man! Game over!
+                if (hitExit() == true) {noLoop()};
+                
+                // When the canvas (and only the canvas) is clicked, make a shape
+                canvas.mouseClicked(showClickShape);
+                
+                // Display and move all the click shapes we have so far
+                for(var i = 0; i < clickShapes.length; i++) {
+                    clickShapes[i].display();
+                    clickShapes[i].move();
+                }
+                
+                //If we have more than 5 moving shapes warn user that's enough
+                if (clickShapes.length >= 5) {
+                    textSize(16);
+                    fill('black');
+                    text("That's Enough Shapes! What a Mess!", canvasWidth/3,canvasHeight/10)
+                }
+            }
+
+            function characterCreate() {
+                fill('White');
+                circle(playerPosition[0],playerPosition[1],20)
+            }
+
+            function characterMove(x,y) {
+            
+            // If we've hit a wall, stop
+            haltedPlayer = playerHitWall();
+            
+            // move the player 10 pixels via the arrow keys
+                if(keyIsDown(UP_ARROW))
+                {  
+                    if (haltedPlayer == "top") {return;}
+                    playerPosition[1] -= 2;
+                }
+            
+                if(keyIsDown(RIGHT_ARROW))
+                {   if (haltedPlayer == "right") {return;}
+                    playerPosition[0] += 2;   
+                }
+            
+                if(keyIsDown(DOWN_ARROW))
+                {
+                    if (haltedPlayer == "bottom") {return;}
+                    playerPosition[1] += 2;   
+                }
+            
+                if(keyIsDown(LEFT_ARROW))
+                {
+                    if (haltedPlayer == "left") {return;}
+                    playerPosition[0] -= 2;   
+                }
+                
+            
+            }
+
+            // clickShapeclass
+            class clickShape {
+                constructor() {
+                    this.x = mouseX;
+                    this.y = mouseY;
+                    this.width = random(10, 40); // random allows for a starting ending range
+                    this.height = random(10, 60);
+                    this.speed = random(5,15);
+                    // assign random shape (1:circle, 2:square or 3: oval)
+                    this.type = int(random(1,3));
+                    // Select a random color from the list
+                    this.color = shapeColors[int(random(0, 11))];    
+                }
+    
+            move() {  
+                this.x +=int(random(0, 5));
+                this.y +=int(random(0, 4));
+                //The code below makes them jiggle, which is fun, but not the desired effect
+                //this.x += random(-this.speed, this.speed);
+                //this.y += random(-this.speed, this.speed);
+                
+                // If they hit a wall, teleport them to the other side
+                if (this.x >= canvasWidth) {
+                    //console.log("BAM!");
+                this.x = 0;
+                }
+                if (this.y >= canvasHeight) {
+                //console.log("BAM!");
+                 this.y = 0;
+               }
+            }
+
+            display() {
+                fill(this.color);
+                // Create a shape (1:circle, 2:square or 3: oval)
+                // No triangles, as they are a pain and kitty ain't got
+                // time for that!
+                // Multiple ifs are meh, right Professor? Let's use a case statement!
+                
+                switch (this.type) {
+                case 1:
+                    circle(this.x, this.y, this.width);
+                    break;
+                case 2:
+                    square(this.x, this.y, this.width);
+                    break;
+                case 3:   
+                    ellipse(this.x, this.y, this.width, this.height);
+                    break;
+                }    
+            }
+        }
+
+        function showClickShape() {
+            // we want a max of 5 shapes
+            if (clickShapes.length < 5) {
+                clickShapes.push(new clickShape())
+            }
+    
+        }
+        function wallsCreate() {
+            fill("black");
+            
+            // Top wall
+            rect(lineThickness, 0, canvasWidth - lineThickness, lineThickness);
+            
+            // Left wall
+            rect(1,1,lineThickness,canvasWidth);
+            
+            // Right wall
+            rect(canvasWidth - lineThickness, 0, lineThickness, canvasWidth - lineThickness);
+            
+            // Bottom Wall
+            rect(lineThickness, canvasHeight - lineThickness, canvasWidth - lineThickness, lineThickness);
+            
+            // Exit in the right wall
+            fill(canvasColor);
+            rect(canvasWidth - lineThickness, exitStart, lineThickness, exitHeight); 
+        }
+
+        function playerHitWall() {
+            // If we hit a wall, stop player movement
+            let hitWall = "nope";
+            
+            // top wall
+            if (playerPosition[1] <= (0 + lineThickness)) {
+               hitWall = "top";
+             }   
+            // right wall
+            if (playerPosition[0] >= (canvasWidth - lineThickness)) {
+                hitWall = "right";
+            }
+            // bottom wall
+             if (playerPosition[1] >= (canvasHeight - lineThickness)) {
+               hitWall = "bottom";
+             }   
+            // left wall
+            if (playerPosition[0] <= (0 + lineThickness)) {
+               hitWall = "left";
+            } 
+            
+            return hitWall;
+        }
+
+        function hitExit() {
+            // If the player makes contact with the exit let the main loop know
+            if (playerPosition[0] >= (canvasWidth - lineThickness) &&
+                (playerPosition[1] > exitStart && playerPosition[1] < exitStart + exitHeight) ) {
+                victory();
+                return true;
+            }
+        }
+        
+        function victory() {
+            fill(0);
+            stroke(5);
+            textSize(26);
+            text("You Won!", canvasWidth/2, canvasHeight/2);
+        
+        }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
