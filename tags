@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+.text-block	homework_6/style.css	/^.text-block {$/;"	c
+A few photos that inspire me	homework_6/media.html	/^			<h2>A few photos that inspire me<\/h2>$/;"	i
+Completely Fair Website Agreement	homework_6/contact.html	/^			<h2>Completely Fair Website Agreement<\/h2>$/;"	i
+Favorite Hobbies	homework_6/index.html	/^			<h2>Favorite Hobbies<\/h2>$/;"	i
+Favorite Resturants	homework_6/index.html	/^			<h2>Favorite Resturants<\/h2>$/;"	i
+Favorite Sites	homework_6/index.html	/^			<h2>Favorite Sites<\/h2>$/;"	i
+Hunting Under the Umber	homework_6/media.html	/^			<h2>Hunting Under the Umber<\/h2>$/;"	i
+MART120	README.md	/^# MART120$/;"	c
+a	homework_6/style.css	/^a {$/;"	s
+a:hover	homework_6/style.css	/^  a:hover {$/;"	s
+agreement	homework_6/contact.html	/^			<form id="agreement" onsubmit="return validateForm()" action="submit_contact.php" method="pos/;"	I
+copy	homework_6/media.html	/^			<p id="copy">Copyright 2020 Bearcat MoonWind Șándor<\/p>$/;"	I
+email	homework_6/contact.html	/^				<input type="text" id="email" name="email" placeholder="Your Email Address"><br>$/;"	I
+header-template	homework_6/contact.html	/^		<div id="header-template"><\/div>$/;"	I
+header-template	homework_6/index.html	/^		<div id="header-template"><\/div>$/;"	I
+header-template	homework_6/media.html	/^		<div id="header-template"><\/div>$/;"	I
+name	homework_6/contact.html	/^				<input type="text" id="name" name="name" placeholder="Your Full Name"><br>$/;"	I
+nav.primary-navigation	homework_6/style.css	/^nav.primary-navigation {$/;"	c
+nav.primary-navigation li a	homework_6/style.css	/^  nav.primary-navigation li a {$/;"	s
+nav.primary-navigation li a:hover	homework_6/style.css	/^  nav.primary-navigation li a:hover {$/;"	s
+nav.primary-navigation li:hover	homework_6/style.css	/^  nav.primary-navigation li:hover {$/;"	s
+nav.primary-navigation ul li	homework_6/style.css	/^  nav.primary-navigation ul li {$/;"	s
+nav.primary-navigation ul li ul	homework_6/style.css	/^  nav.primary-navigation ul li ul {$/;"	s
+nav.primary-navigation ul li ul li	homework_6/style.css	/^  nav.primary-navigation ul li ul li {$/;"	s
+nav.primary-navigation ul li ul li a:hover	homework_6/style.css	/^  nav.primary-navigation ul li ul li a:hover {$/;"	s
+nav.primary-navigation ul li ul:hover	homework_6/style.css	/^  nav.primary-navigation ul li ul:hover {$/;"	s
+nav.primary-navigation ul li:hover > ul	homework_6/style.css	/^  nav.primary-navigation ul li:hover > ul,$/;"	s
+terms	homework_6/contact.html	/^				<input type="checkbox" id="terms" name="terms" value="agreed">$/;"	I
+ul li ul li a	homework_6/style.css	/^ul li ul li a {$/;"	s

@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>
+           Bearcat M. Şándor - Self Portrait  
+        </title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+        <script>
+        	function setup() {
+				 createCanvas(800, 800);
+			}
+			function draw() {
+ 				 // face and ears
+ 				 background(128,128,128);
+ 				 noFill()
+ 				 ellipse(400,300,350,360);
+ 				 triangle(235, 180, 263, 125, 291, 180);
+ 				 triangle(505, 180, 533, 125, 561, 180);
+ 				 // eyes
+ 				 ellipse(325,250,20,40)
+ 				 ellipse(465,250,20,40)
+ 				 // nose  
+ 				 let p1 = { x: 376, y: 255 };
+ 				 let p2 = { x: 378, y: 323 }
+ 				 let p3 = { x: 411, y: 323 };
+ 				 let p4 = { x: 416, y: 255 };
+ 				 curve(p1.x, p1.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+ 				 curve(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);
+ 				 curve(p2.x, p2.y, p3.x, p3.y, p4.x, p4.y, p4.x, p4.y);
+ 				 //whiskers
+ 				 line(335,290,373,290);
+ 				 line(415,290,465,290);
+ 				 line(335,300,373,300);
+ 				 line(415,300,465,300);
+ 				 line(333,310,373,310);
+ 				 line(415,310,465,310);
+ 				 //philtrum
+ 				 line(395,333,395,350);
+ 				 // lips
+ 				 line(380,350,410,350);
+ 				 // signature
+ 				 fill(0, 102, 153);
+ 				 textSize(32);
+ 				 text("Bearcat Self Portrait - Feline Face", 150, 600);
+ 			}	
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
